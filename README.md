@@ -2,6 +2,15 @@
 
 LunrJS-based search for Middleman.
 
+---
+## NOTE ON THIS FORK
+
+We use this fork for a project but we're not planning to maintain or support it. That said, it does merge a bunch of forks out there with the following features:
+  - Supports multiple instances, i.e. you can make indexes of multiple sites or locales etc.
+  - Runs on `ExecJS` instead of `therubyracer`, you can pick your poison regarding Javascript runtimes ([merged PR](https://github.com/greenhost/middleman-search/commit/d47432696c5dfb74e2ce6d43667edda26427bc45) for this change).
+  - Latest `lunr` can be used by putting it in your `package.json` file and running npm or yarn to install it. It will be used for indexing, you will need to add `lunr` to the front end yourself. We are using it with `2.3.8` which seems to work fine, with future(/past) versions <abbr title="Your Mileage May Vary">YMMV</abbr>. ([merged PR](https://github.com/greenhost/middleman-search/commit/b03949372e60fb2dc5fe4fa4b2c31bb8af61844e) for this change).
+---
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -26,7 +35,7 @@ activate :search do |search|
   search.resources = ['blog/', 'index.html', 'contactus/index.html']
 
   search.index_path = 'search/lunr-index.json' # defaults to `search.json`
-  
+
   search.lunr_dirs = ['source/vendor/lunr-custom/'] # optional alternate paths where to look for lunr js files
 
   search.language = 'es' # defaults to 'en'
